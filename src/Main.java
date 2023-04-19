@@ -1,8 +1,8 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        Cipher lol = new Cipher();
-        lol.decode();
+        KeyedCaesar c = new KeyedCaesar();
+        c.decode();
     }
     private static void menu(){
         System.out.println("WELCOME TO CODEBREAKER!" +

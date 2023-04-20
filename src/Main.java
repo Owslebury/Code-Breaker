@@ -1,13 +1,17 @@
 import java.util.*;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 public class Main {
+    static Integer cipherChoice;
     public static void main(String[] args) {
-        Vigenère c = new Vigenère();
-        c.setPlaintext("HELLOWORLD");
-        c.encrypt();
+        menu();
     }
     private static void menu(){
-        System.out.println("WELCOME TO CODEBREAKER!" +
-                "" +
+        System.out.println("WELCOME TO CODEBREAKER!\n");
+        int input;
+        do{
+         System.out.println(
                 "Please select an option:\n" +
                 "1. Choose a Cipher\n" +
                 "2. Edit the key\n" +
@@ -17,7 +21,7 @@ public class Main {
                 "6. Display the cipher text\n" +
                 "7. ");
         Scanner scanner;
-        int input = 0;
+        input = 0;
         do {
             scanner = new Scanner(System.in);
         if (scanner.hasNextInt()) {
@@ -35,8 +39,32 @@ public class Main {
         }while (input == 0);
         switch(input){
             case 1:
-
+               cipherChoice = Cipher();
         }
+    }while (input != 9);
     }
+    private static Integer Cipher(){
+        System.out.println("Which cipher would you like to use?\n\n" +
+                "1. Caesar\n" +
+                "2. Keyed Caesar\n" +
+                "3. Vigenere");
+        Scanner scanner = new Scanner(System.in);
+        Integer choice = 0;
+        do {
+            try {
+                choice = scanner.nextInt();
+            }
+            catch (Exception e){
+                System.out.println("Please only enter a number 1-3");
+            }
+            if (choice < 1 || choice > 3){
+                System.out.println("Please only enter a number 1-3");
+            }
+        }while (choice < 1 || choice > 3);
+        return choice;
+    }
+
+
+
 
 }

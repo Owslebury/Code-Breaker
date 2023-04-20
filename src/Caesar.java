@@ -5,7 +5,8 @@ public class Caesar extends Cipher{
         this.key = key;
     }
 
-    public void decode(){
+    public void encrypt(){
+
         for (char character: plaintext.toCharArray()) {
             if (Character.isUpperCase(character)) {
                 character = (char) ((character + key - 65) % 26 + 65);

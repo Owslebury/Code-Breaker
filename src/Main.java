@@ -1,8 +1,9 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        KeyedCaesar c = new KeyedCaesar();
-        c.decode();
+        Vigenère c = new Vigenère();
+        c.setPlaintext("HELLOWORLD");
+        c.encrypt();
     }
     private static void menu(){
         System.out.println("WELCOME TO CODEBREAKER!" +

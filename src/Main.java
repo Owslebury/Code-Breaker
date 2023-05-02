@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     static Text plaintext = new Text();
+    static Text ciphertext = new Text();
     static Cipher cipher;
     static Integer cipherChoice;
     public static void main(String[] args) {
@@ -67,18 +68,19 @@ public class Main {
                 break;
             case 4:
                 plaintext.readFile();
-
+                cipher.setPlaintext(plaintext.getPlaintext());
                 break;
             case 5:
-                plaintext.printFile();
+                plaintext.printValue();
                 break;
             case 6:
-                    cipher.encrypt();
-                   System.out.println("Please enter a plaintext file first!");
+                    ciphertext.setValue(cipher.encrypt());
                 break;
-
             case 7:
-
+                ciphertext.printValue();
+                break;
+            case 8:
+                ciphertext.saveToFile();
         }
     }while (input != 11);
     }

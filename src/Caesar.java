@@ -1,7 +1,7 @@
 public class Caesar extends Cipher{
     int keynumber = key.parseAsInt();
 
-    public void encrypt(){
+    public String encrypt(){
 
         for (char character: plaintext.toCharArray()) {
             if (Character.isUpperCase(character)) {
@@ -12,7 +12,7 @@ public class Caesar extends Cipher{
             }
             ciphertext += character;
         }
-        System.out.println(ciphertext);
+        return ciphertext;
     }
 
 }

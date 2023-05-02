@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Text {
-    String plaintext = new String();
+    private String value = new String();
     public void readFile(){
         System.out.println("Please enter a filename");
         Scanner userinput = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class Text {
                 try {
                     Scanner myReader = new Scanner(file);
                     while (myReader.hasNextLine()){
-                        plaintext += removePunctuation(myReader.nextLine().toUpperCase()) + "\n";
+                        value += removePunctuation(myReader.nextLine().toUpperCase()) + "\n";
                     }
                     fileFound = true;
                     System.out.println("File loaded\n");
@@ -39,8 +39,16 @@ public class Text {
         }
         return newLine;
     }
-    public void printFile(){
-        System.out.println(removePunctuation(plaintext));
+    public void printValue(){
+        System.out.println(removePunctuation(value));
+    }
+
+    public String getPlaintext() {
+        return removePunctuation(value);
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
 }

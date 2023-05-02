@@ -2,10 +2,10 @@ import java.lang.annotation.Inherited;
 
 public abstract class Cipher {
     String plaintext;
-    protected static Key key = new Key();
+    protected static Key key;
     String ciphertext = new String();
 
-    public abstract void encrypt();
+    public abstract String encrypt();
 
 
     public String getPlaintext() {

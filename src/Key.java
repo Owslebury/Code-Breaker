@@ -7,7 +7,7 @@ import java.io.FileReader;
 public class Key {
     static String filename = "key.txt";
     static String value;
-    public Key(){
+    public Key(String filename){
 
         String content = "";
 

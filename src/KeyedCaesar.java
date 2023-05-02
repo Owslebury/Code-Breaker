@@ -9,15 +9,16 @@ public class KeyedCaesar extends Cipher{
     }
 
 
-    public void encrypt(){
+    public String encrypt(){
         newalphabet += key;
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;
             }
         }
-        System.out.println(newalphabet);
-        shiftalphabet();
+        return newalphabet;
+        //System.out.println(newalphabet);
+        //shiftalphabet();
     }
     public String shiftalphabet(){
         String shiftAlphabet = new String();

@@ -1,6 +1,6 @@
 public class Vigenère extends KeyedCaesar{
     int head = -1;
-    public void encrypt(){
+    public String encrypt(){
         String ciphertext = new String();
         //Wraps the key around the plaintext
         for (char character: plaintext.toCharArray()) {
@@ -17,5 +17,6 @@ public class Vigenère extends KeyedCaesar{
             ciphertext+=(newalphabet.charAt((int)key.charAt(head) - 65));
         }
         System.out.println(ciphertext);
+        return ciphertext;
     }
 }

@@ -1,8 +1,8 @@
-import java.util.*;
-import java.io.File;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
+
 public class Main {
+    static Text plaintext = new Text();
+    static Cipher cipher;
     static Integer cipherChoice;
     public static void main(String[] args) {
         menu();
@@ -17,20 +17,24 @@ public class Main {
                 "2. Edit the key\n" +
                 "3. Display the key\n" +
                 "4. Input a text file\n" +
-                "5. Encrypt the text\n" +
-                "6. Display the cipher text\n" +
-                "7. ");
+                        "5. Display the plain text file\n"+
+                "6. Encrypt the text\n" +
+                "7. Display the cipher text\n" +
+                "8. Save the cipher text\n" +
+                        "9. Input the cipher text file\n" +
+                        "10. Decrypt the ciphertext\n" +
+                        "11. Exit");
         Scanner scanner;
         input = 0;
         do {
             scanner = new Scanner(System.in);
         if (scanner.hasNextInt()) {
             input = scanner.nextInt();
-            if (input <1 || input > 9){
+            if (input <1 || input > 11){
                 do{
                     System.out.println("Please only enter an option between 1 and _");
                     input = scanner.nextInt();
-                }while (input <1 || input > 9);
+                }while (input <1 || input > 11);
             }
         }
         else{
@@ -39,11 +43,46 @@ public class Main {
         }while (input == 0);
         switch(input){
             case 1:
-               cipherChoice = Cipher();
+               cipherChoice = getCipherChoice();
+               switch (cipherChoice){
+                   case 1:
+                       cipher = new Caesar();
+                       break;
+                   case 2:
+                       cipher = new KeyedCaesar();
+                       break;
+                   case 3:
+                       cipher = new Vigenère();
+                       break;
+                   default:
+                       System.err.println("Error: Invalid cipher choice");
+                       break;
+            }
+               break;
+            case 2:
+                cipher.setKeyValue();
+                break;
+            case 3:
+                cipher.printKey();
+                break;
+            case 4:
+                plaintext.readFile();
+
+                break;
+            case 5:
+                plaintext.printFile();
+                break;
+            case 6:
+                    cipher.encrypt();
+                   System.out.println("Please enter a plaintext file first!");
+                break;
+
+            case 7:
+
         }
-    }while (input != 9);
+    }while (input != 11);
     }
-    private static Integer Cipher(){
+    private static Integer getCipherChoice(){
         System.out.println("Which cipher would you like to use?\n\n" +
                 "1. Caesar\n" +
                 "2. Keyed Caesar\n" +

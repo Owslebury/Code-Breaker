@@ -1,46 +1,50 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
 import java.util.Scanner;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 public class Key {
-    String plaintext = new String();
-    public void readFile(){
-        System.out.println("Please enter a filename");
-        Scanner userinput = new Scanner(System.in);
-        String filename;
-        Boolean fileFound = false;
-        do {
-            filename = userinput.nextLine();
-            if (filename == "q"){
-                fileFound = true;
-            }
-            else {
-                File file = new File(filename);
-                try {
-                    Scanner myReader = new Scanner(file);
-                    while (myReader.hasNextLine()){
-                        plaintext += removePunctuation(myReader.nextLine().toUpperCase()) + "\n";
-                    }
-                    fileFound = true;
-                    System.out.println("File loaded\n");
-                } catch (FileNotFoundException e) {
-                    System.out.println("Could not find the file, enter another filename or type q to go back to main menu");
-                }
-            }
-        } while (fileFound == false);
-    }
-    private String removePunctuation(String line){
-        String newLine = new String();
-        char space = ' ';
-        for (char character: line.toCharArray()){
-            if (Character.isAlphabetic(character) == true || Character.valueOf(character).compareTo(Character.valueOf(space)) ==0  ){
-                newLine += character;
-            }
+    static String filename = "key.txt";
+    static String value;
+    public Key(){
+
+        String content = "";
+
+        try {
+            content = new String(Files.readAllBytes(Paths.get(filename)));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return newLine;
+        value = content;
     }
-    public void printFile(){
-        System.out.println(plaintext);
+    public static String getValue() {
+        return value;
+    }
+    public static int parseAsInt(){
+        int result;
+        try {
+            result = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            System.err.println("Key must be an Integer");
+            result = -1;
+        }
+        return result;
     }
 
-}
+    public static void edit(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What would you like to change the key to?");
+        String input = scanner.nextLine();
+        try{
+            updateFile(input);
+        }
+        catch (IOException e){
+            System.err.println("Could not save key to key file");
+        }
+        value = input;
+    }
+    private static void updateFile(String str) throws IOException{
+        Files.write(Paths.get(filename), str.getBytes());
+    }
+    }

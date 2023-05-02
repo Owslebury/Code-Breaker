@@ -1,5 +1,4 @@
 public class Vigenère extends KeyedCaesar{
-    String key = "LEMON";
     int head = -1;
     public void encrypt(){
         String ciphertext = new String();

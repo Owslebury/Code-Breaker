@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fec5d63-1eef-496b-92f5-134496692b19" name="Changes" comment="key class">
+    <list default="true" id="5fec5d63-1eef-496b-92f5-134496692b19" name="Changes" comment="epicness">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Caesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Caesar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cipher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KeyedCaesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyedCaesar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vigenère.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vigenère.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +57,7 @@
       <updated>1681931829596</updated>
       <workItem from="1681931831176" duration="19882000" />
       <workItem from="1683031534305" duration="2252000" />
-      <workItem from="1683034111414" duration="12950000" />
+      <workItem from="1683034111414" duration="15459000" />
     </task>
     <task id="LOCAL-00001" summary="caesar done">
       <created>1681938636538</created>
@@ -98,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683042838781</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="epicness">
+      <created>1683051594670</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683051594670</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +113,7 @@
     <MESSAGE value="vigenere" />
     <MESSAGE value="menu options and text formatting" />
     <MESSAGE value="key class" />
-    <option name="LAST_COMMIT_MESSAGE" value="key class" />
+    <MESSAGE value="epicness" />
+    <option name="LAST_COMMIT_MESSAGE" value="epicness" />
   </component>
 </project>

@@ -4,6 +4,7 @@ public class Main {
     static Text plaintext = new Text();
     static Text ciphertext = new Text();
     static Cipher cipher;
+    static Key key;
     static Integer cipherChoice;
     public static void main(String[] args) {
         menu();
@@ -64,7 +65,12 @@ public class Main {
                 cipher.setKeyValue();
                 break;
             case 3:
-                cipher.printKey();
+                if (cipher == null) {
+                    System.out.println("Please set the cipher first");
+                }
+                else{
+                    cipher.printKey();
+                }
                 break;
             case 4:
                 plaintext.readFile();
@@ -80,7 +86,13 @@ public class Main {
                 ciphertext.printValue();
                 break;
             case 8:
-                ciphertext.saveToFile();
+                try{
+                    ciphertext.saveToFile();
+                }
+                catch (Exception e){
+                    System.err.println("Filename error saving cipher text to file");
+                }
+
         }
     }while (input != 11);
     }

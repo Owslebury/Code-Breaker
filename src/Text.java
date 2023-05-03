@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Text {
@@ -50,5 +49,18 @@ public class Text {
     public void setValue(String value) {
         this.value = value;
     }
-
+    public void saveToFile() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter a file name: ");
+        String fileName = reader.readLine();
+        File file = new File(fileName);
+        while (!file.exists()) {
+            System.out.println("File does not exist. Please enter another file name");
+            fileName = reader.readLine();
+            file = new File(fileName);
+        }
+        FileWriter writer = new FileWriter(file);
+        writer.write(value);
+        writer.close();;
+    }
 }

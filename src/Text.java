@@ -32,7 +32,7 @@ public class Text {
         String newLine = new String();
         char space = ' ';
         for (char character: line.toCharArray()){
-            if (Character.isAlphabetic(character) == true || Character.valueOf(character).compareTo(Character.valueOf(space)) ==0 || Character.isWhitespace(character) == true ){
+            if (Character.isAlphabetic(character) == true ){
                 newLine += character;
             }
         }

@@ -22,8 +22,11 @@ public class KeyedCaesar extends Cipher{
             }
         }
         //return newalphabet;
+        shiftalphabet();
         System.out.println(newalphabet);
-        return shiftalphabet();
+        System.out.println("Custom shift:");
+        System.out.println(customShift());
+        return "POOOO";
     }
     public String shiftalphabet(){
         String shiftAlphabet = new String();
@@ -34,8 +37,13 @@ public class KeyedCaesar extends Cipher{
             shiftAlphabet += newalphabet.charAt(i);
         }
         newalphabet = shiftAlphabet;
-        System.out.println(newalphabet);
         return newalphabet;
+    }
+    private String customShift (){
+        for (char character: plaintext.toCharArray()) {
+            ciphertext += (newalphabet.charAt(alphabet.indexOf(character)));
+        }
+        return ciphertext;
     }
     //add option for the shift to go the other way for minus numbers
 }

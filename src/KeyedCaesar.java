@@ -1,6 +1,7 @@
+import java.util.Scanner;
 public class KeyedCaesar extends Cipher{
     static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    String key = "LEMON";
+
     String newalphabet = new String();
     int shift = 4;
 
@@ -10,15 +11,19 @@ public class KeyedCaesar extends Cipher{
 
 
     public String encrypt(){
-        newalphabet += key;
+        System.out.println("Please enter a shift value");
+        Scanner scanner = new Scanner(System.in);
+        shift = scanner.nextInt();
+
+        newalphabet += key.getValue();
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;
             }
         }
-        return newalphabet;
-        //System.out.println(newalphabet);
-        //shiftalphabet();
+        //return newalphabet;
+        System.out.println(newalphabet);
+        return shiftalphabet();
     }
     public String shiftalphabet(){
         String shiftAlphabet = new String();
@@ -29,7 +34,7 @@ public class KeyedCaesar extends Cipher{
             shiftAlphabet += newalphabet.charAt(i);
         }
         newalphabet = shiftAlphabet;
-        //System.out.println(newalphabet);
+        System.out.println(newalphabet);
         return newalphabet;
     }
     //add option for the shift to go the other way for minus numbers

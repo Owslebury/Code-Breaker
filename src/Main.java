@@ -73,8 +73,15 @@ public class Main {
                 }
                 break;
             case 4:
-                plaintext.readFile();
-                cipher.setPlaintext(plaintext.getPlaintext());
+                //this could be a possible flaw as you need to set the cipher first before giving it the plaintext
+                if (cipher == null){
+                    System.out.println("Please set the cipher first");
+                }
+                else{
+                    plaintext.readFile();
+                    cipher.setPlaintext(plaintext.getPlaintext());
+                    System.out.println("Plaintext set");
+                }
                 break;
             case 5:
                 plaintext.printValue();

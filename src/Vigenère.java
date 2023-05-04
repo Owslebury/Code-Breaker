@@ -8,13 +8,13 @@ public class Vigenère extends KeyedCaesar{
             //shifts the alphabet as the Vigenere table does
             shift = (int)character - 65;
             newalphabet = shiftalphabet();
-            if (head == key.length() - 1){
+            if (head == key.getValue().length() - 1){
                 head = 0;
             }
             else{
                 head++;
             }
-            ciphertext+=(newalphabet.charAt((int)key.charAt(head) - 65));
+            ciphertext+=(newalphabet.charAt((int)key.getValue().charAt(head) - 65));
         }
         System.out.println(ciphertext);
         return ciphertext;

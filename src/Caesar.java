@@ -7,7 +7,7 @@ public class Caesar extends Cipher{
     }
 
     public String encrypt(){
-
+        ciphertext = "";
         for (char character: plaintext.toCharArray()) {
             if (Character.isUpperCase(character)) {
                 character = (char) ((character + keynumber - 65) % 26 + 65);

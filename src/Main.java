@@ -20,13 +20,13 @@ public class Main {
                 "1. Choose a Cipher\n" +
                 "2. Edit the key\n" +
                 "3. Display the key\n" +
-                "4. Input a text file\n" +
+                "4. Input a plain text file\n" +
                         "5. Display the plain text file\n"+
-                "6. Encrypt the text\n" +
+                "6. Encrypt the plain text\n" +
                 "7. Display the cipher text\n" +
                 "8. Save the cipher text\n" +
                         "9. Input the cipher text file\n" +
-                        "10. Decrypt the ciphertext\n" +
+                        "10. Decrypt the cipher text\n" +
                         "11. Exit");
         Scanner scanner;
         input = 0;

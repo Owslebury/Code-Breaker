@@ -28,7 +28,7 @@ public class Text {
             }
         } while (fileFound == false);
     }
-    protected static String removePunctuation(String line){
+    private static String removePunctuation(String line){
         String newLine = new String();
         char space = ' ';
         for (char character: line.toCharArray()){

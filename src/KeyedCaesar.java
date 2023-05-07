@@ -5,6 +5,12 @@ public class KeyedCaesar extends Cipher{
     String newalphabet = new String();
     int shift = 4;
 
+    public KeyedCaesar(){
+        key.setFilename("keyed-caesar-key.txt");
+        key = new Key();
+
+    }
+
     public void setShift(int shift) {
         this.shift = shift;
     }
@@ -23,10 +29,13 @@ public class KeyedCaesar extends Cipher{
         }
         //return newalphabet;
         shiftalphabet();
-        System.out.println(newalphabet);
+        System.out.println("Adjusted alphabet = " + newalphabet);
         System.out.println("Custom shift:");
         System.out.println(customShift());
         return "POOOO";
+    }
+    public String decrypt(){
+        return "LOL";
     }
     public String shiftalphabet(){
         String shiftAlphabet = new String();

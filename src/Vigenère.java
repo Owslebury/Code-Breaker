@@ -1,5 +1,9 @@
 public class Vigenère extends KeyedCaesar{
     int head = -1;
+    public Vigenère(){
+        key.setFilename("vigenere-key.txt");
+        key = new Key();
+    }
     public String encrypt(){
         String ciphertext = new String();
         //Wraps the key around the plaintext
@@ -18,5 +22,8 @@ public class Vigenère extends KeyedCaesar{
         }
         System.out.println(ciphertext);
         return ciphertext;
+    }
+    public String decrypt(){
+        return "HA";
     }
 }

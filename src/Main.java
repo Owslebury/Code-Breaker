@@ -6,6 +6,7 @@ public class Main {
     static Cipher cipher;
     static Key key;
     static Integer cipherChoice;
+    static Boolean cipherNeedsText;
     public static void main(String[] args) {
         menu();
     }
@@ -62,32 +63,38 @@ public class Main {
             }
                break;
             case 2:
-                cipher.setKeyValue();
+                if (checkCipher()){
+                    cipher.setKeyValue();
+                }
                 break;
             case 3:
-                if (cipher == null) {
-                    System.out.println("Please set the cipher first");
-                }
-                else{
+                if (checkCipher()){
                     cipher.printKey();
                 }
                 break;
             case 4:
                 //this could be a possible flaw as you need to set the cipher first before giving it the plaintext
-                if (cipher == null){
-                    System.out.println("Please set the cipher first");
-                }
-                else{
-                    plaintext.readFile();
+                plaintext.readFile();
+                if (checkCipher()){
                     cipher.setPlaintext(plaintext.getPlaintext());
                     System.out.println("Plaintext set");
+                }
+                else{
+                    cipherNeedsText = true;
                 }
                 break;
             case 5:
                 plaintext.printValue();
                 break;
             case 6:
-                    ciphertext.setValue(cipher.encrypt());
+                if (checkCipher()){
+                    if (cipher.getPlaintext() == null){
+                        System.err.println("You have not added any plaintext");
+                    }
+                    else{
+                        ciphertext.setValue(cipher.encrypt());
+                    }
+            }
                 break;
             case 7:
                 ciphertext.printValue();
@@ -99,6 +106,11 @@ public class Main {
                 catch (Exception e){
                     System.err.println("Filename error saving cipher text to file");
                 }
+            case 10:
+                if (checkCipher()){
+                    plaintext.setValue(cipher.decrypt());
+                }
+                System.out.println(plaintext.getPlaintext());
 
         }
     }while (input != 11);
@@ -122,6 +134,20 @@ public class Main {
             }
         }while (choice < 1 || choice > 3);
         return choice;
+    }
+
+    private static boolean checkCipher(){
+        if (cipher == null){
+            System.err.println("Please set the cipher first");
+            return false;
+        }
+        else{
+            if (cipherNeedsText){
+                cipher.setPlaintext(plaintext.getPlaintext());
+                cipherNeedsText = false;
+            }
+            return true;
+        }
     }
 
 

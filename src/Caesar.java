@@ -1,5 +1,10 @@
 public class Caesar extends Cipher{
-    int keynumber = key.parseAsInt();
+    int keynumber;
+    public Caesar(){
+        key.setFilename("caesar-key.txt");
+        key = new Key();
+        keynumber = key.parseAsInt();
+    }
 
     public String encrypt(){
 
@@ -13,6 +18,19 @@ public class Caesar extends Cipher{
             ciphertext += character;
         }
         return ciphertext;
+    }
+    public String decrypt(){
+        plaintext = "";
+        for (char character: ciphertext.toCharArray()) {
+            if (Character.isUpperCase(character)) {
+                character = (char) ((character - keynumber - 65) % 26 + 65);
+            }
+            else if (Character.isLowerCase(character)) {
+                character = (char) ((character - keynumber - 97) % 26 + 97);
+            }
+            plaintext += character;
+        }
+        return plaintext;
     }
 
 }

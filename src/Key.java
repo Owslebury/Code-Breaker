@@ -5,18 +5,23 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 public class Key {
-    static String filename = "key.txt";
+
+    static String filename = new String();
     static String value = "";
-    public Key(String filename){
+    public Key(){
 
         String content = "";
 
         try {
             content = new String(Files.readAllBytes(Paths.get(filename)));
         } catch (IOException e) {
+            System.err.println(filename + " not found.");
             e.printStackTrace();
         }
         value = content;
+    }
+    public static void setFilename(String filename) {
+        Key.filename = filename;
     }
     public static String getValue() {
         return value;
@@ -26,7 +31,7 @@ public class Key {
         try {
             result = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            System.err.println("Key must be an Integer");
+            System.err.println("Key must be an Integer. Please edit the key.");
             result = -1;
         }
         return result;

@@ -6,6 +6,7 @@ public abstract class Cipher {
     String ciphertext = new String();
 
     public abstract String encrypt();
+    public abstract String decrypt();
 
 
     public String getPlaintext() {

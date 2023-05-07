@@ -6,7 +6,8 @@ public class Main {
     static Cipher cipher;
     static Key key;
     static Integer cipherChoice;
-    static Boolean cipherNeedsText;
+    static Boolean cipherNeedsPlaintext = false;
+    static Boolean cipherNeedsCiphertext = false;
     public static void main(String[] args) {
         menu();
     }
@@ -61,33 +62,34 @@ public class Main {
                        System.err.println("Error: Invalid cipher choice");
                        break;
             }
+                System.out.println("Cipher set");
                break;
             case 2:
-                if (checkCipher()){
+                if (checkCipher(true)){
                     cipher.setKeyValue();
                 }
                 break;
             case 3:
-                if (checkCipher()){
+                if (checkCipher(true)){
                     cipher.printKey();
                 }
                 break;
             case 4:
                 //this could be a possible flaw as you need to set the cipher first before giving it the plaintext
                 plaintext.readFile();
-                if (checkCipher()){
-                    cipher.setPlaintext(plaintext.getPlaintext());
+                if (checkCipher(false)){
+                    cipher.setPlaintext(plaintext.getText());
                     System.out.println("Plaintext set");
                 }
                 else{
-                    cipherNeedsText = true;
+                    cipherNeedsPlaintext = true;
                 }
                 break;
             case 5:
                 plaintext.printValue();
                 break;
             case 6:
-                if (checkCipher()){
+                if (checkCipher(true)){
                     if (cipher.getPlaintext() == null){
                         System.err.println("You have not added any plaintext");
                     }
@@ -106,11 +108,21 @@ public class Main {
                 catch (Exception e){
                     System.err.println("Filename error saving cipher text to file");
                 }
+            case 9:
+                ciphertext.readFile();
+                if (checkCipher(false)){
+                    cipher.setCiphertext(ciphertext.getText());
+                    System.out.println("Ciphertext set");
+                }
+                else{
+                    cipherNeedsCiphertext = true;
+                }
+                break;
             case 10:
-                if (checkCipher()){
+                if (checkCipher(true)){
                     plaintext.setValue(cipher.decrypt());
                 }
-                System.out.println(plaintext.getPlaintext());
+                System.out.println(plaintext.getText());
 
         }
     }while (input != 11);
@@ -136,15 +148,27 @@ public class Main {
         return choice;
     }
 
-    private static boolean checkCipher(){
+    /**
+     * This function checks if the cipher is null
+     * and if there is pending plaintext/ciphertext to be added, it adds it to the cipher
+     * @param printErrorMessage
+     * @return
+     */
+    private static boolean checkCipher(boolean printErrorMessage){
         if (cipher == null){
-            System.err.println("Please set the cipher first");
+            if (printErrorMessage){
+                System.err.println("Please set the cipher first");
+            }
             return false;
         }
         else{
-            if (cipherNeedsText){
-                cipher.setPlaintext(plaintext.getPlaintext());
-                cipherNeedsText = false;
+            if (cipherNeedsPlaintext){
+                cipher.setPlaintext(plaintext.getText());
+                cipherNeedsPlaintext = false;
+            }
+            if (cipherNeedsCiphertext){
+                cipher.setCiphertext(ciphertext.getText());
+                cipherNeedsCiphertext = false;
             }
             return true;
         }

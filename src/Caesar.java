@@ -23,13 +23,13 @@ public class Caesar extends Cipher{
         plaintext = "";
         for (char character: ciphertext.toCharArray()) {
             if (Character.isUpperCase(character)) {
-                character = (char) ((character - keynumber - 65) % 26 + 65);
-            }
-            else if (Character.isLowerCase(character)) {
-                character = (char) ((character - keynumber - 97) % 26 + 97);
+                character = (char) ((character - keynumber + 26 - 65) % 26 + 65);
+            } else if (Character.isLowerCase(character)) {
+                character = (char) ((character - keynumber + 26 - 97) % 26 + 97);
             }
             plaintext += character;
         }
+        System.out.println(plaintext);
         return plaintext;
     }
 

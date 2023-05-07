@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
-public class Key {
+public class Key extends Text{
 
     static String filename = new String();
     static String value = "";

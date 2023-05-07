@@ -24,6 +24,14 @@ public class Vigenère extends KeyedCaesar{
         return ciphertext;
     }
     public String decrypt(){
-        return "HA";
+        for (int i = 0; i < ciphertext.length(); i++) {
+            newalphabet = alphabet;
+            //shifts the alphabet as the Vigenere table does
+            shift = (int)ciphertext.charAt(i) - (int)key.getValue().charAt(i % key.getValue().length());
+            newalphabet = shiftalphabet();
+            plaintext += newalphabet.charAt((int)alphabet.indexOf(ciphertext.charAt(i)));
+        }
+        System.out.println(plaintext);
+        return plaintext;
     }
 }

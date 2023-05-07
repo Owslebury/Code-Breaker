@@ -30,9 +30,9 @@ public class KeyedCaesar extends Cipher{
         //return newalphabet;
         shiftalphabet();
         System.out.println("Adjusted alphabet = " + newalphabet);
-        System.out.println("Custom shift:");
-        System.out.println(customShift());
-        return "POOOO";
+        //System.out.println("Custom shift:");
+        //System.out.println(customShift());
+        return customShift();
     }
     public String decrypt(){
         return "LOL";

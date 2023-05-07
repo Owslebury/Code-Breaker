@@ -10,7 +10,7 @@ public class Text {
         Boolean fileFound = false;
         do {
             filename = userinput.nextLine();
-            if (filename == "q"){
+            if (filename.toLowerCase().equals("q")){
                 fileFound = true;
             }
             else {
@@ -28,7 +28,7 @@ public class Text {
             }
         } while (fileFound == false);
     }
-    private String removePunctuation(String line){
+    protected static String removePunctuation(String line){
         String newLine = new String();
         char space = ' ';
         for (char character: line.toCharArray()){
@@ -42,7 +42,7 @@ public class Text {
         System.out.println(removePunctuation(value));
     }
 
-    public String getPlaintext() {
+    public String getText() {
         return removePunctuation(value);
     }
 

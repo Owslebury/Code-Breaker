@@ -9,6 +9,10 @@ public abstract class Cipher {
     public abstract String decrypt();
 
 
+    public void setCiphertext(String ciphertext) {
+        this.ciphertext = ciphertext;
+    }
+
     public String getPlaintext() {
         return plaintext;
     }

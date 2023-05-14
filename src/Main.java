@@ -119,6 +119,7 @@ public class Main {
                 }
                 break;
             case 10:
+                cipher.setPlaintext("");
                 if (checkCipher(true)){
                     plaintext.setValue(cipher.decrypt());
                 }

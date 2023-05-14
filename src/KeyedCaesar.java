@@ -17,11 +17,12 @@ public class KeyedCaesar extends Cipher{
 
 
     public String encrypt(){
+        ciphertext = "";
         System.out.println("Please enter a shift value");
         Scanner scanner = new Scanner(System.in);
         shift = scanner.nextInt();
 
-        newalphabet += removePunctuation(key.getValue());
+        newalphabet += removePunctuation(key.getValue().toUpperCase());
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;
@@ -35,25 +36,23 @@ public class KeyedCaesar extends Cipher{
         return customShift();
     }
     public String decrypt(){
-        System.out.println("Please enter the shift value used to encrypt:");
+        plaintext = "";
+        System.out.println("Please enter the original shift value used to encrypt");
         Scanner scanner = new Scanner(System.in);
-        int encryptShift = scanner.nextInt();
-        int decryptShift = newalphabet.length() - encryptShift;
-        setShift(decryptShift);
+        shift = scanner.nextInt();
 
-        shiftalphabet();
-        System.out.println("Adjusted alphabet = " + newalphabet);
-
-        String plaintext = customShift();
-        String originalAlphabet = alphabet.substring(0, newalphabet.length() - shift) + alphabet.substring(newalphabet.length() - shift);
-
-        String originalPlaintext = "";
-        for (char character: plaintext.toCharArray()) {
-            int index = newalphabet.indexOf(character);
-            originalPlaintext += originalAlphabet.charAt(index);
+        newalphabet += removePunctuation(key.getValue().toUpperCase());
+        for (char character: alphabet.toCharArray()) {
+            if (newalphabet.indexOf(character) == -1){
+                newalphabet += character;
+            }
         }
-
-        return originalPlaintext;
+        //return newalphabet;
+        shiftalphabet();
+        for (char character: ciphertext.toCharArray()) {
+            plaintext += alphabet.charAt(newalphabet.indexOf(character));
+        }
+        return plaintext;
     }
     public String shiftalphabet(){
         String shiftAlphabet = new String();

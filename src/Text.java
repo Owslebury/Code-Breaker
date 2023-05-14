@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Text {
     private String value = new String();
+
+    /**
+     * Reads a file and sets value, with exception handling
+     */
     public void readFile(){
         System.out.println("Please enter a filename");
         Scanner userinput = new Scanner(System.in);
@@ -18,7 +22,7 @@ public class Text {
                 try {
                     Scanner myReader = new Scanner(file);
                     while (myReader.hasNextLine()){
-                        value += removePunctuation(myReader.nextLine().toUpperCase()) + "\n";
+                        value += myReader.nextLine() + "\n";
                     }
                     fileFound = true;
                     System.out.println("File loaded\n");
@@ -28,6 +32,12 @@ public class Text {
             }
         } while (fileFound == false);
     }
+
+    /**
+     * Removes punctuation from a line
+     * @param line
+     * @return
+     */
     private static String removePunctuation(String line){
         String newLine = new String();
         char space = ' ';
@@ -38,17 +48,32 @@ public class Text {
         }
         return newLine;
     }
+
+    /**
+     * Prints a line before and without spaces and to uppercase
+     */
     public void printValue(){
-        System.out.println(removePunctuation(value));
+        if (value != removePunctuation(value).toUpperCase()){
+            System.out.println(value);
+            System.out.println("Will be encrypted as: " + removePunctuation(value).toUpperCase());
+        }
+        else{
+            System.out.println(removePunctuation(value).toUpperCase());
+        }
     }
 
     public String getText() {
-        return removePunctuation(value);
+        return value;
     }
 
     public void setValue(String value) {
         this.value = value;
     }
+
+    /**
+     * Saves text to file, used for both plaintext and ciphertext
+     * @throws IOException
+     */
     public void saveToFile() throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Enter a file name: ");

@@ -11,6 +11,11 @@ public class Main {
     public static void main(String[] args) {
         menu();
     }
+
+    /**
+     * Menu takes user input 1-11 and calls functions for each of the selected options. cipher variable
+     * is a global variable and most options just call its public functions.
+     */
     private static void menu(){
         System.out.println("WELCOME TO CODEBREAKER!\n");
         int input;
@@ -24,7 +29,7 @@ public class Main {
                         "5. Display the plain text file\n"+
                 "6. Encrypt the plain text\n" +
                 "7. Display the cipher text\n" +
-                "8. Save the cipher text\n" +
+                "8. Save the cipher text to a user specified file\n" +
                         "9. Input the cipher text file\n" +
                         "10. Decrypt the cipher text\n" +
                         "11. Exit");
@@ -75,7 +80,6 @@ public class Main {
                 }
                 break;
             case 4:
-                //this could be a possible flaw as you need to set the cipher first before giving it the plaintext
                 plaintext.readFile();
                 if (checkCipher(false)){
                     cipher.setPlaintext(plaintext.getText());
@@ -95,8 +99,9 @@ public class Main {
                     }
                     else{
                         ciphertext.setValue(cipher.encrypt());
+                        System.out.println("Plaintext has been encrypted");
                     }
-            }
+                }
                 break;
             case 7:
                 ciphertext.printValue();
@@ -128,6 +133,11 @@ public class Main {
         }
     }while (input != 11);
     }
+
+    /**
+     * Gets the choice of cipher and sets the cipher abstract class to the cipher class
+     * @return
+     */
     private static Integer getCipherChoice(){
         System.out.println("Which cipher would you like to use?\n\n" +
                 "1. Caesar\n" +

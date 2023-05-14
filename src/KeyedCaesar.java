@@ -17,12 +17,11 @@ public class KeyedCaesar extends Cipher{
 
 
     public String encrypt(){
-        ciphertext = "";
         System.out.println("Please enter a shift value");
         Scanner scanner = new Scanner(System.in);
         shift = scanner.nextInt();
 
-        newalphabet += removePunctuation(key.getValue().toUpperCase());
+        newalphabet += removePunctuation(key.getValue());
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;
@@ -37,11 +36,11 @@ public class KeyedCaesar extends Cipher{
     }
     public String decrypt(){
         plaintext = "";
-        System.out.println("Please enter the original shift value used to encrypt");
+        System.out.println("Please enter a shift value");
         Scanner scanner = new Scanner(System.in);
         shift = scanner.nextInt();
 
-        newalphabet += removePunctuation(key.getValue().toUpperCase());
+        newalphabet += removePunctuation(key.getValue());
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;

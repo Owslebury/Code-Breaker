@@ -93,6 +93,7 @@ public class Main {
                 plaintext.printValue();
                 break;
             case 6:
+                cipher.setCiphertext("");
                 if (checkCipher(true)){
                     if (cipher.getPlaintext() == null){
                         System.err.println("You have not added any plaintext");

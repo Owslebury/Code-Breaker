@@ -1,6 +1,9 @@
 import java.lang.annotation.Inherited;
 
 public abstract class Cipher {
+    /**
+     * This class has default methods and attributes used by all cipher classes
+     */
     String plaintext;
     protected static Key key;
     String ciphertext = new String();
@@ -15,6 +18,10 @@ public abstract class Cipher {
 
     public String getPlaintext() {
         return plaintext;
+    }
+
+    public static void setKey(Key key) {
+        Cipher.key = key;
     }
 
     public void setPlaintext(String plaintext) {

@@ -8,6 +8,10 @@ public class Key extends Text{
 
     static String filename = new String();
     static String value = "";
+
+    /**
+     * Constructor reads key file at user declared filename
+     */
     public Key(){
 
         String content = "";
@@ -26,6 +30,11 @@ public class Key extends Text{
     public static String getValue() {
         return value;
     }
+
+    /**
+     * For caesar cipher, ensures the key is an integer
+     * @return
+     */
     public static int parseAsInt(){
         int result;
         try {
@@ -37,6 +46,9 @@ public class Key extends Text{
         return result;
     }
 
+    /**
+     * Takes user input for the key value and edits the value variable via updateFile
+     */
     public static void edit(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to change the key to?");
@@ -48,7 +60,14 @@ public class Key extends Text{
             System.err.println("Could not save key to key file");
         }
         value = input;
+        System.out.println("Key value changed");
     }
+
+    /**
+     * Writes string to user declared filename
+     * @param str
+     * @throws IOException
+     */
     private static void updateFile(String str) throws IOException{
         Files.write(Paths.get(filename), str.getBytes());
     }

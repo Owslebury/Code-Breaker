@@ -115,6 +115,7 @@ public class Main {
                     System.err.println("Filename error saving cipher text to file");
                 }
             case 9:
+                cipher.setCiphertext("");
                 ciphertext.readFile();
                 if (checkCipher(false)){
                     cipher.setCiphertext(ciphertext.getText());
@@ -129,8 +130,7 @@ public class Main {
                 if (checkCipher(true)){
                     plaintext.setValue(cipher.decrypt());
                 }
-                System.out.println(plaintext.getText());
-
+                System.out.println("Plaintext set");
         }
     }while (input != 11);
     }

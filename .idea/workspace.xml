@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5fec5d63-1eef-496b-92f5-134496692b19" name="Changes" comment="kino">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Caesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Caesar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KeyedCaesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyedCaesar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vigenère.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vigenère.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +61,7 @@
       <workItem from="1683031534305" duration="2252000" />
       <workItem from="1683034111414" duration="16806000" />
       <workItem from="1683203342102" duration="19779000" />
+      <workItem from="1684136013821" duration="1822000" />
     </task>
     <task id="LOCAL-00001" summary="caesar done">
       <created>1681938636538</created>

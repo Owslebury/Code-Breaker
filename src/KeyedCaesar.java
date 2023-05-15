@@ -19,9 +19,9 @@ public class KeyedCaesar extends Cipher{
     public String encrypt(){
         System.out.println("Please enter a shift value");
         Scanner scanner = new Scanner(System.in);
-        shift = scanner.nextInt();
+        shift = scanner.nextInt() % 26;
 
-        newalphabet += removePunctuation(key.getValue());
+        newalphabet += removePunctuation(key.getValue().toUpperCase());
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;
@@ -40,7 +40,7 @@ public class KeyedCaesar extends Cipher{
         Scanner scanner = new Scanner(System.in);
         shift = scanner.nextInt();
 
-        newalphabet += removePunctuation(key.getValue());
+        newalphabet += removePunctuation(key.getValue().toUpperCase());
         for (char character: alphabet.toCharArray()) {
             if (newalphabet.indexOf(character) == -1){
                 newalphabet += character;

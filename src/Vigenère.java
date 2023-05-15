@@ -27,9 +27,8 @@ public class Vigenère extends KeyedCaesar{
             else{
                 head++;
             }
-            ciphertext+=(newalphabet.charAt((int)key.getValue().charAt(head) - 65));
+            ciphertext+=(newalphabet.charAt((int)key.getValue().toUpperCase().charAt(head) - 65));
         }
-        System.out.println(ciphertext);
         return ciphertext;
     }
 
@@ -38,14 +37,21 @@ public class Vigenère extends KeyedCaesar{
      * @return
      */
     public String decrypt(){
+        String decryptedText = new String();
         for (int i = 0; i < ciphertext.length(); i++) {
-            newalphabet = alphabet;
-            //shifts the alphabet as the Vigenere table does
-            shift = (int)ciphertext.charAt(i) - (int)key.getValue().charAt(i % key.getValue().length());
-            newalphabet = shiftalphabet();
-            plaintext += newalphabet.charAt((int)alphabet.indexOf(ciphertext.charAt(i)));
+            char ciphertextChar = ciphertext.charAt(i);
+            char keyChar = key.getValue().toUpperCase().charAt(i % key.getValue().length());
+            int shift = (int) keyChar - 65;
+
+            String newAlphabet = shiftAlphabet(shift);
+            int decryptedCharIndex = newAlphabet.indexOf(ciphertextChar);
+            char decryptedChar = (decryptedCharIndex != -1) ? alphabet.charAt(decryptedCharIndex) : ciphertextChar;
+            decryptedText += decryptedChar;
         }
-        System.out.println(plaintext);
-        return plaintext;
+        return decryptedText;
+    }
+    private String shiftAlphabet(int shift) {
+        String shiftedAlphabet = alphabet.substring(shift) + alphabet.substring(0, shift);
+        return shiftedAlphabet;
     }
 }

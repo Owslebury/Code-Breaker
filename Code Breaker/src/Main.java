@@ -76,6 +76,7 @@ public class Main {
                 break;
             case 4:
                 //this could be a possible flaw as you need to set the cipher first before giving it the plaintext
+                plaintext.setValue("");
                 plaintext.readFile();
                 if (checkCipher(false)){
                     cipher.setPlaintext(plaintext.getText());
@@ -109,9 +110,10 @@ public class Main {
                     System.err.println("Filename error saving cipher text to file");
                 }
             case 9:
-                cipher.setCiphertext("");
+                ciphertext.setValue("");
                 ciphertext.readFile();
                 if (checkCipher(false)){
+                    cipher.setCiphertext("");
                     cipher.setCiphertext(ciphertext.getText());
                     System.out.println("Ciphertext set");
                 }

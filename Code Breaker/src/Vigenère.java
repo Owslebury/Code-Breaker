@@ -24,14 +24,19 @@ public class Vigenère extends KeyedCaesar{
     }
     public String decrypt(){
         String decryptedText = new String();
+        char decryptedChar;
         for (int i = 0; i < ciphertext.length(); i++) {
-            char ciphertextChar = ciphertext.charAt(i);
-            char keyChar = key.getValue().toUpperCase().charAt(i % key.getValue().length());
-            int shift = (int) keyChar - 65;
+            char ciphertextPos = ciphertext.charAt(i);
+            char keyPos = key.getValue().toUpperCase().charAt(i % key.getValue().length());
+            shift = (int) keyPos - 65;
 
             String newAlphabet = shiftAlphabet(shift);
-            int decryptedCharIndex = newAlphabet.indexOf(ciphertextChar);
-            char decryptedChar = (decryptedCharIndex != -1) ? alphabet.charAt(decryptedCharIndex) : ciphertextChar;
+            head = newAlphabet.indexOf(ciphertextPos);
+            if (head != -1) {
+                decryptedChar = alphabet.charAt(head);
+            } else {
+                decryptedChar = ciphertextPos;
+            }
             decryptedText += decryptedChar;
         }
         return decryptedText;
